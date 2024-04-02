@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/transfer' , [TransferController::class , 'index'])->name('transfer.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
