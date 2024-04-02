@@ -16,6 +16,7 @@
             <h1><a href="" class="no-underline hover:underline ">Pay services</a></h1>
             <h1><a href="" class="no-underline hover:underline ">Facture</a></h1>
             <h1><a href="" class="no-underline hover:underline ">Investement</a></h1>
+            <h1><a href="" class="no-underline hover:underline ">Coin Market</a></h1>
             <h1><a href="" class="no-underline hover:underline ">History</a></h1>
             <h1><a href="" class="no-underline hover:underline ">Settings</a></h1>
             <h1 ><a href="" class="no-underline text-lg border border-black px-3 py-1 rounded-md hover:underline ">Log out</a></h1>
