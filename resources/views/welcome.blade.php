@@ -31,8 +31,8 @@
                 <label for="">select</label>
                 <select class="border-none rounded-lg" name="gender" id="">
                     <option selected disabled>Gender</option>
-                    <option value="seller">male</option>
-                    <option value="customer">female</option>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
                 </select>
                 <x-input-error :messages="$errors->get('type')" class="mt-2" />
             </div>
@@ -47,7 +47,7 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
             <div class="flex justify-end items-center gap-3">
-                <a href="" class="underline text-sm text-gray-700">Already have account</a>
+                <a href="{{ route('login') }}" class="underline text-sm text-gray-700">Already have account</a>
                 <button class="bg-[#1F2937] text-white px-3 py-2 rounded-lg">signup</button>
             </div>
         </form>

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\CrypthoController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\DoubleAuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\DoubleAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,14 +13,19 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified','2fa'])->name('dashboard');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware('auth')->group(function () {
+    Route::put("/doubleAuth/enable" , [DoubleAuthController::class , "authSwitcher"])->name('doubleAuth.switch');
+    Route::get("/doubleAuth/show" , [DoubleAuthController::class , "index"])->name("doubleAuth");
+    Route::put("/doubleAuth/validation" , [DoubleAuthController::class , "validate2fa"])->name("doubleAuth.valide");
+
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-// });
+});
 
 Route::get('/cryptho',[CrypthoController::class,'index'])->name('cryptho.cryptho');
 
