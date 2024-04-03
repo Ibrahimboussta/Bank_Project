@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->integer("card_number");
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->bigInteger("card_number");
             $table->integer("cvc");
-            $table->integer("rib");
+            $table->bigInteger("rib")->unique();
             $table->date("date_expiration");
-            $table->boolean("blocked");
-            $table->integer("money");
+            $table->boolean("blocked")->default(false);
+            $table->integer("money")->default(0);
             $table->timestamps();
         });
     }

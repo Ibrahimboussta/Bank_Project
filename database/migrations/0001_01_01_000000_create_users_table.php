@@ -18,8 +18,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('gender');
-            $table->integer('wallet');
-            $table->boolean('loan');
+            $table->integer('wallet')->nullable();
+            $table->boolean('loan')->default(false);
+            $table->boolean('double_auth')->default(false);
+            $table->boolean('auth_validate')->default(true);
+            $table->integer('validation_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

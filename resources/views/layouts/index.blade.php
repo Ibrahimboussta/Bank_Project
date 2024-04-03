@@ -7,8 +7,7 @@
     <title>Document</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body >
-    <div class="flex justify-between items-center ">
+<body>
 
         <div class="bg-slate-100 w-64 h-screen shadow-2xl">
             <div class="text-2xl p-4 flex flex-col justify-around items-stert ml-8 h-screen">
@@ -28,7 +27,7 @@
         @yield('content')
 
     </div>
-
-
+    @yield('content')
+    
 </body>
 </html>
