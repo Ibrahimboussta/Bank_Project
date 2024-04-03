@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CrypthoController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransferController;
@@ -20,7 +21,9 @@ Route::get('/dashboard', function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
 // });
 
-Route::get('/home', [DashbordController::class, 'index'])->name('home.index');
+Route::get('/cryptho',[CrypthoController::class,'index'])->name('cryptho.cryptho');
+
 require __DIR__.'/auth.php';

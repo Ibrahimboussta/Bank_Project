@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transfers', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->integer('amount');
-            $table->integer('RIB');
-            $table->integer('cardNumber');
+            $table->integer("card_number");
+            $table->integer("cvc");
+            $table->integer("rib");
+            $table->date("date_expiration");
+            $table->boolean("blocked");
+            $table->integer("money");
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transfers');
+        Schema::dropIfExists('cards');
     }
 };
