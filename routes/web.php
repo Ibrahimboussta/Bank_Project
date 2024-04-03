@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\CrypthoController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\DoubleAuthController;
@@ -19,7 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::put("/doubleAuth/enable" , [DoubleAuthController::class , "authSwitcher"])->name('doubleAuth.switch');
     Route::get("/doubleAuth/show" , [DoubleAuthController::class , "index"])->name("doubleAuth");
     Route::put("/doubleAuth/validation" , [DoubleAuthController::class , "validate2fa"])->name("doubleAuth.valide");
-
+    // card
+    Route::get('/card/show',[CardController::class, "index"])->name("card.show");
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
