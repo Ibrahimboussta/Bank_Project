@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Facture;
+use App\Models\PaidFacture;
 use Illuminate\Http\Request;
 
-class FactureController extends Controller
+class PaidFactureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,6 @@ class FactureController extends Controller
     public function index()
     {
         //
-        
         return view("facture.facture");
     }
 
@@ -36,18 +35,15 @@ class FactureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Facture $facture)
+    public function show(PaidFacture $paidFacture)
     {
         //
-        
-          return view("facture.facture");
-        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Facture $facture)
+    public function edit(PaidFacture $paidFacture)
     {
         //
     }
@@ -55,7 +51,7 @@ class FactureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Facture $facture)
+    public function update(Request $request, PaidFacture $paidFacture)
     {
         //
     }
@@ -63,7 +59,7 @@ class FactureController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Facture $facture)
+    public function destroy(PaidFacture $paidFacture)
     {
         //
     }

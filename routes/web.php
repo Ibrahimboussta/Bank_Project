@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CrypthoController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\EditController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/facture',[FactureController::class , "index"])->name("facture");
+Route::get("/edit", [EditController::class,"index" ])->name("edit.index");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

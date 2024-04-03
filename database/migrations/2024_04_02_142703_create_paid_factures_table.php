@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('factures', function (Blueprint $table) {
+        Schema::create('paid_factures', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->integer("amount");
             $table->foreignId("user_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();;
-            $table->boolean("paid");
+            $table->foreignId("facture_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();;
+            $table->integer("amount");
+            $table->foreignId("carte_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();;
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('factures');
+        Schema::dropIfExists('paid_factures');
     }
 };

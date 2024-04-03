@@ -44,4 +44,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function Facture(){
+        return $this->hasMany(Facture::class);
+    }
 }

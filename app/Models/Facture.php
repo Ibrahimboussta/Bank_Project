@@ -15,6 +15,13 @@ class Facture extends Model
         "paid",
     ];
 
+    public function PaidFacture(){
+        return $this->hasMany(PaidFacture::class);
+}
+
+public function User(){
+    return $this->belongsTo(User::class);
+}
 
 
 }
