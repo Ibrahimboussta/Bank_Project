@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Card;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
@@ -32,13 +35,25 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', Rules\Password::defaults()],
+            'gender'=>'required',
         ]);
-
+        $cardnumber = rand(10000000000000, 99999999999999 );
+        $cvc = rand(100, 999 );
+        $rib = mt_rand((int)100000000000000000000000 , (int)999999999999999999999999);
+        $date_exp = Carbon::now()->addYears(5);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'gender' => $request->gender,
+        ]);
+        Card::create([
+            'user_id' => $user->id,
+            'card_number' => $cardnumber,
+            'cvc' => $cvc,
+            'rib' => $rib,
+            'date_expiration' => $date_exp,
         ]);
 
         event(new Registered($user));

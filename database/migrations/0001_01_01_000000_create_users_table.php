@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('gender');
+            $table->integer('wallet')->nullable();
+            $table->boolean('loan')->default(false);
+            $table->boolean('double_auth')->default(false);
+            $table->boolean('auth_validate')->default(true);
+            $table->integer('validation_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -40,6 +46,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+    
     public function down(): void
     {
         Schema::dropIfExists('users');

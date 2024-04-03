@@ -8,7 +8,6 @@
     <title>Document</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
 <body>
 
 
@@ -30,8 +29,8 @@
         </div>
         @yield('content')
     </div>
-
-
+    @yield('content')
+    
 </body>
 
 </html>
