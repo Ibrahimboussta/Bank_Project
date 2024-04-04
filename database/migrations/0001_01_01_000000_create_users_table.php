@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('gender');
-            $table->integer('wallet')->nullable();
+            $table->integer('wallet')->default(0);
             $table->boolean('loan')->default(false);
             $table->boolean('double_auth')->default(false);
             $table->boolean('auth_validate')->default(true);

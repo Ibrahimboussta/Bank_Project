@@ -18,8 +18,8 @@
     <div>
         <img width="700" src="{{ asset('img/Wallet-pana.png') }}">
     </div>
-    <div class="bg-[#ff725e] w-[25%] p-2 rounded-lg">
-        <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-2">
+    <div class="bg-[#ffc801] w-[25%] p-2 rounded-lg">
+        <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-2 py-3 px-2">
             @csrf
             <h1 class="text-center font-bold text-xl ">Sign up</h1>
             <div class="flex flex-col gap-1">

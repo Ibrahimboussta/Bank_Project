@@ -34,14 +34,15 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', Rules\Password::defaults()],
-            'gender'=>'required',
+            'gender' => 'required',
         ]);
-        $cardnumber = rand(10000000000000, 99999999999999 );
-        $cvc = rand(100, 999 );
-        $rib = mt_rand((int)100000000000000000000000 , (int)999999999999999999999999);
+        $cardnumber = rand(10000000000000, 99999999999999);
+        $cvc = rand(100, 999);
+        $rib = mt_rand((int) 100000000000000000000000, (int) 999999999999999999999999);
         $date_exp = Carbon::now()->addYears(5);
+        // $totalBalance = 0;
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -54,7 +55,12 @@ class RegisteredUserController extends Controller
             'cvc' => $cvc,
             'rib' => $rib,
             'date_expiration' => $date_exp,
+            'money' => 1500,
         ]);
+
+        // foreach ($user->cards as $card) {
+        //     $totalBalance += $card->money;
+        // }
 
         event(new Registered($user));
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger("rib")->unique();
             $table->date("date_expiration");
             $table->boolean("blocked")->default(false);
-            $table->integer("money")->default(0);
+            $table->integer("money");
             $table->timestamps();
         });
     }

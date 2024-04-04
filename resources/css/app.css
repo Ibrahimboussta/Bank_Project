@@ -9,6 +9,14 @@
     font-family: 'Space Mono', monospace;
 }
 
+.glass {
+    background: rgba(255, 192, 1, 0.731);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    /* border: 1px solid rgba(255, 192, 1, 0.3); */
+}
 
 .card {
     width: 320px;
@@ -16,7 +24,6 @@
     -webkit-perspective: 600px;
     -moz-perspective: 600px;
     perspective: 600px;
-
 }
 
 .card__part {
