@@ -11,9 +11,8 @@ class Transfer extends Model
 
     protected $fillable = [
         'amount',
-        'RIB',
-        'cardNumber'
+        'rib',
+        'card_number'
     ];
-    
 
 }

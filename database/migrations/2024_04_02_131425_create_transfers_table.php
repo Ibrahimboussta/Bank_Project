@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
             $table->integer('amount');
-            $table->integer('RIB');
-            $table->integer('cardNumber');
+            $table->integer('rib');
+            $table->integer('card_number');
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ Route::get('/', function () {
 });
 
 Route::get('/transfer' , [TransferController::class , 'index'])->name('transfer.index');
-Route::get('/transfer/store' , [TransferController::class , 'store'])->name('transfer.store');
+Route::post('/transfer/store' , [TransferController::class , 'store'])->name('transfer.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
