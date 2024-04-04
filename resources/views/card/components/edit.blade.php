@@ -1,4 +1,5 @@
-@foreach (Auth::user()->cards as $card)
+<div>
+    @foreach (Auth::user()->cards as $card)
     
     <div class="card">
         <div class="card__front card__part">
@@ -27,3 +28,5 @@
         </div>
     </div>
 @endforeach
+
+</div>

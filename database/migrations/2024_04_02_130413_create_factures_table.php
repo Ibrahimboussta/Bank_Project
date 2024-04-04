@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->integer("amount");
             $table->foreignId("user_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();;
-            $table->boolean("paid");
+            $table->string("type");
+            $table->integer("amount");
+            $table->boolean("paid")->default(false);
             $table->timestamps();
         });
     }

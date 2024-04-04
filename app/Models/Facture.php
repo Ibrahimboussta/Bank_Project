@@ -9,9 +9,10 @@ class Facture extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "name", 
-        "amount", 
+
         "user_id", 
+        "type", 
+        "amount", 
         "paid",
     ];
 
@@ -19,7 +20,7 @@ class Facture extends Model
         return $this->hasMany(PaidFacture::class);
 }
 
-public function User(){
+public function user(){
     return $this->belongsTo(User::class);
 }
 

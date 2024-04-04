@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Facture;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,5 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        // $factures = Facture::all();
+        // view()->share('factures', $factures);
     }
 }

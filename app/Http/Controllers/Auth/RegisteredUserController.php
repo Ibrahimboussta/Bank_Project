@@ -54,6 +54,7 @@ class RegisteredUserController extends Controller
             'cvc' => $cvc,
             'rib' => $rib,
             'date_expiration' => $date_exp,
+            'money'=>1500
         ]);
 
         event(new Registered($user));
