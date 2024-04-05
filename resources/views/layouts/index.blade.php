@@ -61,7 +61,7 @@
                 <i class="fa-solid fa-wallet "></i>
                     <h1>{{ Auth::user()->wallet()}} dh</h1>
 
-        <div class="w-full flex flex-col justify-center items-end gap-y-3 ">
+        {{-- <div class="w-full flex flex-col justify-center items-end gap-y-3 ">
             <div class=" py-2 flex justify-end w-[100%] ">
                 <div
                     class="border-2 flex items-center gap-3 mr-5 py-2 border-[#ffc801] text-white bg-black w-fit px-3 rounded-lg">
@@ -70,7 +70,7 @@
                         <h1>{{ Auth::user()->wallet += $card->money }} dh</h1>
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
             @yield('content')
 
             @include('layouts.flash')
