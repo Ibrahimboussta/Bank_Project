@@ -15,8 +15,8 @@ Route::get('/', function () {
 });
 
 Route::get('/facture',[FactureController::class , "index"])->name("facture");
-Route::post('/facture/', [FactureController::class, "store"])->name("facture.store");
-Route::get("/edit", [EditController::class,"index" ])->name("edit.index");
+Route::post('/facture', [FactureController::class, "store"])->name("facture.store");
+Route::post("/facture/edit", [FactureController::class,"edit" ])->name("facture.edit");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -26,15 +26,27 @@ Route::middleware('auth')->group(function () {
     Route::put("/doubleAuth/enable" , [DoubleAuthController::class , "authSwitcher"])->name('doubleAuth.switch');
     Route::get("/doubleAuth/show" , [DoubleAuthController::class , "index"])->name("doubleAuth");
     Route::put("/doubleAuth/validation" , [DoubleAuthController::class , "validate2fa"])->name("doubleAuth.valide");
+    
     // card
     Route::get('/card/show',[CardController::class, "index"])->name("card.show");
+    Route::post('/create/card', [CardController::class, 'store'])->name('store.card');
+    Route::delete('/delete/card/{card}', [CardController::class, 'destroy'])->name('delete.card');
+    
+    // settings 
+    Route::get('/settings',[ProfileController::class, "showsettings"])->name("settings.show");
 
+    // crypto 
+    
+Route::get('/cryptho',[CrypthoController::class,'index'])->name('cryptho.cryptho');
+    
+
+
+    // profile 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
 });
 
-Route::get('/cryptho',[CrypthoController::class,'index'])->name('cryptho.cryptho');
 
 require __DIR__.'/auth.php';

@@ -46,8 +46,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $user = User::where("id", auth()->user()->id)->first();
+        if ($user && $user->double_auth && $user->auth_validate) {
+            $user->auth_validate = false;
+            $user->save();
+        }
         Auth::guard('web')->logout();
-
+        
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();

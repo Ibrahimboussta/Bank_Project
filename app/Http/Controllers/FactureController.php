@@ -81,14 +81,25 @@ class FactureController extends Controller
     {
         //
         request()->validate([
-            'facture'=>'required',
+            'facture' => 'required',
         ]);
 
 
         $amount = $request->facture;
         $user = auth()->user();
-        $cards = $user;
+        $cards = $user->cards;
 
+        foreach ($cards as $card) {
+
+            if ($card->money > $amount) {
+                $card->money -= $amount;
+                $card->save();
+            }else{
+                return back()->with('error', 'card not validate');
+            }
+        }
+
+        return back();
     }
 
     /**
