@@ -4,9 +4,9 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\CrypthoController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\DoubleAuthController;
-use App\Http\Controllers\EditController;
-use App\Http\Controllers\FactureController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransferController;
 use App\Http\Middleware\DoubleAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +14,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/facture',[FactureController::class , "index"])->name("facture");
-Route::post('/facture', [FactureController::class, "store"])->name("facture.store");
-Route::post("/facture/edit", [FactureController::class,"edit" ])->name("facture.edit");
+// Route::get('/home' , [HomeController::class , 'index'])->name('home.index') ;
+
+Route::get('/transfer' , [TransferController::class , 'index'])->name('transfer.index');
+Route::post('/transfer/store' , [TransferController::class , 'store'])->name('transfer.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,10 +35,6 @@ Route::middleware('auth')->group(function () {
     
     // settings 
     Route::get('/settings',[ProfileController::class, "showsettings"])->name("settings.show");
-
-    // crypto 
-    
-Route::get('/cryptho',[CrypthoController::class,'index'])->name('cryptho.cryptho');
     
 
 
@@ -48,5 +45,6 @@ Route::get('/cryptho',[CrypthoController::class,'index'])->name('cryptho.cryptho
     
 });
 
+Route::get('/cryptho',[CrypthoController::class,'index'])->name('cryptho.cryptho');
 
 require __DIR__.'/auth.php';

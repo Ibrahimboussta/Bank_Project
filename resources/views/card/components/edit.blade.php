@@ -1,10 +1,12 @@
-<div class="w-full">
+<div class="w-full  flex flex-col items-center justify-center ">
+    
     <div class="m-2">
         <form action="{{ route('store.card') }}" method="post">
             @csrf
             <x-primary-button>{{ __('Add Card ') }} &nbsp; <i class="fa-solid fa-plus"></i></x-primary-button>
         </form>
     </div>
+
     <div class="flex flex-col gap-4 mt-5">
         @foreach (Auth::user()->cards as $card)
             @if ($card->blocked == false)
