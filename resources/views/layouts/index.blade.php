@@ -11,127 +11,62 @@
 </head>
 
 <body>
-    <div class=" h-screen flex justify-between items-center">
-        <div class="bg-slate-100 w-64 h-screen shadow-2xl flex items-center ">
-            <div class="p-2 bg-white w-60 flex flex-col " id="sideNav">
-                <nav>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-100 hover:text-white"
-                        href="#">
-                        <i class="fas fa-home mr-2"></i>My card
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-100 hover:text-white"
-                        href="#">
-                        <i class="fas fa-file-alt mr-2"></i>Transfer
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-100 hover:text-white"
-                        href="#">
-                        <i class="fas fa-users mr-2"></i>Pay services
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-100 hover:text-white"
-                        href="#">
-                        <i class="fas fa-store mr-2"></i>Facture
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-100 hover:text-white"
-                        href="#">
-                        <i class="fas fa-exchange-alt mr-2"></i>Investement
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-100 hover:text-white"
-                        href="#">
-                        <i class="fas fa-exchange-alt mr-2"></i>Coin Market
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-100 hover:text-white"
-                        href="#">
-                        <i class="fas fa-exchange-alt mr-2"></i>History
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-100 hover:text-white"
-                    href="#">
-                    <i class="fas fa-exchange-alt mr-2"></i>Settings
-                </a>
-                </nav>
-    
-                <!-- Ítem de Cerrar Sesión -->
-                <a class="block text-gray-500 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-100 hover:text-white mt-auto"
-                    href="#">
-                    <i class="fas fa-sign-out-alt mr-2"></i>Cerrar sesión
-                </a>
-    
-                <!-- Señalador de ubicación -->
-                <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mt-2"></div>
-    
-                <!-- Copyright al final de la navegación lateral -->
-                <p class="mb-1 px-5 py-3 text-left text-xs text-cyan-500">Copyright WCSLAT@2023</p>
-    
+    <div class=" mt-10 flex justify-between items-center">
+
+        <div id="nav-bar">
+            <input id="nav-toggle" type="checkbox" />
+            <div class="ms-3" id="nav-header"><a id="nav-title"><i class="fab fa-codepen"></i>
+                    GEEKBANK</a>
+                <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+                <hr />
             </div>
+
+            <div id="nav-content">
+                <div class="nav-button"><i class="fas fa-brands fa-cc-visa"></i><a href="/card/show">My Cards</a></div>
+                <div class="nav-button"><i class="fas fa-money-bill-transfer"></i></i><a href="/transfer">Transfer</a>
+                </div>
+                <div class="nav-button"><i class="fas fa-money-check-dollar"></i><a href="/facture">Pay Services</a>
+                </div>
+                <div class="nav-button"><i class="fas fa-circle-dollar-to-slot"></i><a href="/loan">Loan</a></div>
+                <hr />
+                <div class="nav-button"><i class="fas fa-heart"></i><a href="/investment">Investement</a></div>
+                <div class="nav-button"><i class="fas fa-chart-line"></i><a href="/crypto">Coin Market</a></div>
+                <div class="nav-button"><i class="fas fa-gear"></i><a href="/settings">Settings</a></div>
+                <hr />
+                <div class="nav-button">
+                    <i class="fas fa-right-from-bracket"></i>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <button :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </button>
+                    </form>
+                </div>
+
+                <div id="nav-content-highlight"></div>
+            </div>
+            <input id="nav-footer-toggle" type="checkbox" />
+
         </div>
 
-
-
-        @include('layouts.flash')
-        @yield('content')
-
-
-<body class="flex">
-
-    <div class="bg-[#ffc801] w-64 shadow-2xl">
-        <div class=" p-5 flex flex-col justify-between h-screen items-stert  ">
-            <div class="flex flex-col gap-4">
-                <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]">
-                    <i class="fa-solid fa-house"></i>
-                    <a href="" class="no-underline">Home</a>
-                </button>
-                <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]">
-                    <i class="fa-solid fa-credit-card"></i>
-                    <a href="" class="no-underline">My cards</a>
-                </button>
-                <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]"><i
-                        class="fa-solid fa-right-left"></i><a href="" class="no-underline">Transfer</a></button>
-                <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]"><i
-                        class="fa-solid fa-file-invoice-dollar"></i><a href="" class="no-underline">Pay
-                        services</a></button>
-                <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]"><i
-                        class="fa-solid fa-hand-holding-dollar"></i><a href=""
-                        class="no-underline">Loan</a></button>
-                <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]">
-                    <i class="fa-solid fa-money-bill-trend-up"></i>
-                    <a href="" class="no-underline">Investment</a>
-                </button>
-                <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]">
-                    <i class="fa-brands fa-bitcoin"></i>
-                    <a href="" class="no-underline">Coin Market</a>
-                </button>
-                <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    <a href="" class="no-underline">History</a>
-                </button>
+        <div class="w-full flex flex-col justify-center items-end gap-y-3 ">
+            <div class=" py-2 flex justify-end w-[100%] ">
+                <div
+                    class="border-2 flex items-center gap-3 mr-5 py-2 border-[#ffc801] text-white bg-black w-fit px-3 rounded-lg">
+                    <i class="fa-solid fa-wallet "></i>
+                    @foreach (Auth::user()->cards as $card)
+                        <h1>{{ Auth::user()->wallet += $card->money }} dh</h1>
+                    @endforeach
+                </div>
             </div>
-            <div class="flex flex-col gap-4">
-                <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]">
-                    <i class="fa-solid fa-gear"></i>
-                    <a href="{{ route('settings.show') }}" class="no-underline">Settings</a>
-                </button>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button class="flex gap-2 items-center p-2 rounded-lg hover:bg-[#00000012]">
-                        <i class="fa-solid fa-arrow-right-from-bracket "></i>
-                        <a href="" class="no-underline text-lg px-3 py-1 rounded-md  ">Log out</a>
-                    </button>
-                </form>
-            </div>
+            @yield('content')
+
+            @include('layouts.flash')
         </div>
-    </div>
-    @include('layouts.flash')
-    <div class="w-full">
-        <div class="bg-[#ffc801] py-2 flex justify-end ">
-            <div
-                class="border-2 flex items-center gap-3 mr-5 py-2 border-[#000] text-white bg-black w-fit px-3 rounded-lg">
-                <i class="fa-solid fa-wallet "></i>
-                @foreach (Auth::user()->cards as $card)
-                    <h1>{{ Auth::user()->wallet += $card->money }} dh</h1>
-                @endforeach
-            </div>
-        </div>
-        @yield('content')
-    </div>
 
 
 </body>

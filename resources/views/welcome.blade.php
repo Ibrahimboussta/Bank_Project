@@ -39,7 +39,9 @@
             <div class="flex flex-col gap-1">
                 <label for="">email</label>
                 <input class="border-none rounded-lg" name="email" type="email" placeholder="email">
+                
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    
             </div>
             <div class="flex flex-col gap-1">
                 <label for="">password</label>
