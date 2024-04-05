@@ -4,6 +4,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\CrypthoController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\DoubleAuthController;
+use App\Http\Controllers\FactureController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransferController;
@@ -15,6 +16,11 @@ Route::get('/', function () {
 });
 
 // Route::get('/home' , [HomeController::class , 'index'])->name('home.index') ;
+
+Route::get('/facture' , [FactureController::class , 'index'])->name('facture');
+Route::post('/facture/store' , [FactureController::class , 'store'])->name('facture.store');
+Route::put('/facture/edit' , [FactureController::class , 'edit'])->name('facture.edit');
+
 
 Route::get('/transfer' , [TransferController::class , 'index'])->name('transfer.index');
 Route::post('/transfer/store' , [TransferController::class , 'store'])->name('transfer.store');
