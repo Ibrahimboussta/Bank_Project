@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Card;
+use App\Models\Transfer;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
@@ -42,6 +43,7 @@ class RegisteredUserController extends Controller
         $cvc = rand(100, 999);
         $rib = mt_rand((int) 100000000000000000000000, (int) 999999999999999999999999);
         $date_exp = Carbon::now()->addYears(5);
+        
         // $totalBalance = 0;
         $user = User::create([
             'name' => $request->name,
@@ -54,6 +56,7 @@ class RegisteredUserController extends Controller
             'card_number' => $cardnumber,
             'cvc' => $cvc,
             'rib' => $rib,
+            'money' => 1500,
             'date_expiration' => $date_exp,
             'money' => 1500,
         ]);
