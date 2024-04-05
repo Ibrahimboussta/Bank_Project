@@ -65,9 +65,7 @@
             <div
                 class="border-2 flex items-center gap-3 mr-5 py-2 border-[#000] text-white bg-black w-fit px-3 rounded-lg">
                 <i class="fa-solid fa-wallet "></i>
-                @foreach (Auth::user()->cards as $card)
-                    <h1>{{ Auth::user()->wallet += $card->money }} dh</h1>
-                @endforeach
+                    <h1>{{ $walletAmount }} dh</h1>
             </div>
         </div>
         @yield('content')

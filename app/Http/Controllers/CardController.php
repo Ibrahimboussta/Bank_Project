@@ -11,26 +11,18 @@ use Illuminate\Support\Facades\Schedule;
 
 class CardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        return view('card.cart');
+        $user = Auth::user();
+        $walletAmount = 0;
+        $cards = Card::where('user_id', $user->id)->get();
+        foreach ($cards as $card) {
+            $walletAmount += $card->money;
+        }
+        return view('card.cart', compact('walletAmount'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
@@ -41,26 +33,26 @@ class CardController extends Controller
         $date_exp = Carbon::now()->addYears(5);
         $cards = Card::where('user_id', auth()->user()->id)->where('blocked', false)->get();
         // dd($cards->count());
-        if ($cards->count() < 2 ) {
-                Card::create([
-                    'user_id' => $user->id,
-                    'card_number' => $cardnumber,
-                    'cvc' => $cvc,
-                    'rib' => $rib,
-                    'date_expiration' => $date_exp,
-                    'money' => 0,
-                ]);
-                return back()->with("success", "card added successfully");
-            }
-            return back()->with("error", "you can't add more than two cards");
+        if ($cards->count() < 2) {
+            Card::create([
+                'user_id' => $user->id,
+                'card_number' => $cardnumber,
+                'cvc' => $cvc,
+                'rib' => $rib,
+                'date_expiration' => $date_exp,
+                'money' => 99,
+            ]);
+            return back()->with("success", "card added successfully");
+        }
+        return back()->with("error", "you can't add more than two cards");
     }
 
     public function destroy(Card $card)
     {
         $cards = Card::where('user_id', auth()->user()->id)->where('blocked', false)->get();
-        if ($cards->count() > 0) {   
-            $card -> blocked = true;
-            $card -> money = 0;
+        if ($cards->count() > 1) {
+            $card->blocked = true;
+            $card->money = 0;
             $card->save();
             return back()->with("success", "card blocked successfully");
         }

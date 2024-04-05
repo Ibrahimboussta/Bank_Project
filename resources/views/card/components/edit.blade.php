@@ -46,8 +46,9 @@
                             <form action="{{ route('delete.card', $card) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <x-primary-button>{{ __('Block ') }} &nbsp; <i
-                                        class="fa-solid fa-circle-xmark"></i></x-primary-button>
+                                <x-primary-button>{{ __('Block ') }} &nbsp;
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                </x-primary-button>
                             </form>
                         </div>
                     </div>

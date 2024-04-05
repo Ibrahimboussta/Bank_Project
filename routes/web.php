@@ -4,6 +4,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\CrypthoController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\DoubleAuthController;
+use App\Http\Controllers\LoanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\DoubleAuthMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified','2fa'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified', '2fa'])->group(function () {
     Route::put("/doubleAuth/enable" , [DoubleAuthController::class , "authSwitcher"])->name('doubleAuth.switch');
     Route::get("/doubleAuth/show" , [DoubleAuthController::class , "index"])->name("doubleAuth");
     Route::put("/doubleAuth/validation" , [DoubleAuthController::class , "validate2fa"])->name("doubleAuth.valide");
@@ -28,8 +29,12 @@ Route::middleware('auth')->group(function () {
     
     // settings 
     Route::get('/settings',[ProfileController::class, "showsettings"])->name("settings.show");
-    
 
+    // Loan
+    Route::get('/loan', [LoanController::class, 'index'])->name('loan.show');
+    Route::post('/loan/store', [LoanController::class, 'store'])->name('loan.store');
+    Route::post('/', [LoanController::class, 'take'])->name('loan');
+    
 
     // profile 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

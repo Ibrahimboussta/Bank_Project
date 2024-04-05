@@ -38,7 +38,7 @@ class AuthenticatedSessionController extends Controller
             $user->validation_code = $code;
             $user->save();
         }
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('card.show', absolute: false));
     }
 
     /**
