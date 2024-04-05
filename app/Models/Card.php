@@ -25,4 +25,7 @@ class Card extends Model
     public function loans(){
         return $this->hasMany(Loan::class);
     }
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
 }

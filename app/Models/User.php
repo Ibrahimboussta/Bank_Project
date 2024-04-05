@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -22,7 +23,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'gender',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -51,4 +51,19 @@ class User extends Authenticatable implements MustVerifyEmail
     public function loans(){
         return $this->hasMany(Loan::class);
     }
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
+    public function wallet () {
+        // $user = Auth::user();
+        $walletAmount = 0;
+        // $cards = Card::where('user_id', $this->id)->get();
+
+        foreach ($this->cards as $card) {
+            $walletAmount += $card->money;
+        }
+        return $walletAmount;
+    }
+
 }
+

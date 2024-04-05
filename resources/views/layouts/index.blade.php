@@ -65,7 +65,7 @@
             <div
                 class="border-2 flex items-center gap-3 mr-5 py-2 border-[#000] text-white bg-black w-fit px-3 rounded-lg">
                 <i class="fa-solid fa-wallet "></i>
-                    <h1>{{ $walletAmount }} dh</h1>
+                    <h1>{{ Auth::user()->wallet()}} dh</h1>
             </div>
         </div>
         @yield('content')

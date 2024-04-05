@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use App\Models\Loan;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,25 +50,12 @@ class LoanController extends Controller
                 'amount' => $request->amount,
             ]);
         }
+        Transaction::create([
+            'user_id' => $request->user_id,
+            'card_id' => $request->card_id,
+            'amount' => $request->amount,
+            'receiver'=>'take loan',
+        ]);
         return back();
     }
-    // public function take()
-    // {
-    //     $user = User::where('id', Auth::user()->id)->first();
-    //     $cardRib = Loan::where('user_id', Auth::user()->id)->where('loan_end', false)->first();
-    //     if ($user->loan) {
-    //         $card = Card::where('id', $cardRib->card_id)->first();
-    //         $card->money -= ($cardRib->amount * 0.1);
-    //         $card->save();
-    //         $cardRib->time_paid += 1;
-    //         $cardRib->save();
-    //         if ($cardRib->time_paid == 10) {
-    //             $user->loan = false;
-    //             $user->save();
-    //             $cardRib->loan_end = true;
-    //             $cardRib->save();
-    //         }
-    //     }
-    //     return back();
-    // }
 }

@@ -2,6 +2,7 @@
 
 use App\Models\Card;
 use App\Models\Loan;
+use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Inspiring;
